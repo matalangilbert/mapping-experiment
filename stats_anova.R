@@ -4,8 +4,6 @@ primary_output_measure_d <- read.csv("~/Dropbox/UniWork/MappingExperiment/D/r_pr
 
 attach(primary_output_measure_d)
 
-primary_output_measure_d
-
 dm_anova = ezANOVA(data = primary_output_measure_d,
         dv = .(completion_time_in_seconds), 
         wid = .(subject),

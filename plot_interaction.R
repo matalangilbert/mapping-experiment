@@ -1,4 +1,3 @@
-library(ez)
 library(plotrix)
 setwd("~/Dropbox/UniWork/MappingExperiment/Scripts")
 
@@ -11,6 +10,12 @@ offset=0.05
 
 interaction_plot.screenX.y_values = c(
   mean(input_data[world_dimension=='x' & screen_dimension=='x',4]),
+  mean(input_data[world_dimension=='y' & screen_dimension=='x',4]),
+  mean(input_data[world_dimension=='z' & screen_dimension=='x',4])
+  )
+
+interaction_plot.screenY.y_values = c(
+  mean(input_data[world_dimension=='x' & screen_dimension=='y',4]),
   mean(input_data[world_dimension=='y' & screen_dimension=='y',4]),
   mean(input_data[world_dimension=='z' & screen_dimension=='y',4])
   )
@@ -26,7 +31,7 @@ interaction_plot.y_values = c(
   interaction_plot.screenY.y_values,
   interaction_plot.screenZ.y_values
   )
-
+number_of_subjects = length(unique(subject))
 interaction_plot.error_bars = c(
   sd(input_data[world_dimension=='x' & screen_dimension=='x',4]) / sqrt(number_of_subjects),
   sd(input_data[world_dimension=='y' & screen_dimension=='x',4]) / sqrt(number_of_subjects),
@@ -55,7 +60,7 @@ interaction_plot.screenZ.error_bars = c(
   sd(input_data[world_dimension=='z' & screen_dimension=='z',4]) / sqrt(number_of_subjects)
   )
 
-png('interaction.png')
+#png('interaction.png')
 plot(interaction_plot.x_values,
      interaction_plot.y_values,
      xaxt="n", #suppress plotting of x-axis
@@ -133,4 +138,4 @@ legend(2.65,405,
        col=c("red","blue","cyan"),
        title="Screen"
   )
-dev.off(dev.cur())
+#dev.off(dev.cur())

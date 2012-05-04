@@ -20,44 +20,24 @@ screen_plot.error_bars = c(
   )
 
 #jpeg('screen_mean.jpg')
-plot(screen_plot.x_values,
-     screen_plot.y_values,
-     xaxt="n", #suppress plotting of x-axis
-     type="n",
-     main="Screen Effect on Mean Completion Times",
-     xlab="Screen Dimension",
-     ylab="Mean Completion Time (s)",
-     ylim=c(min(screen_plot.y_values)-max(screen_plot.error_bars),
-            max(screen_plot.y_values)+max(screen_plot.error_bars)
-            )
-     )
-axis(1,
-     at=c(1:3),
-     labels=c('x', 'y', 'z')
-     )
-points(screen_plot.x_values,
-       screen_plot.y_values,
-       pch=4,
-       col=c("blue", "green", "purple"),
-       )
-lines(screen_plot.x_values, 
-      screen_plot.y_values,
-      col="black",
-      lty=2
-      )
-plotCI(c(1:3),
+
+barplot(screen_plot.y_values,
+        space=0.5,
+        names.arg=c("x","y","z"),
+        main="Screen Effect on Mean Completion Times",
+        xlab="Screen Dimension",
+        ylab="Mean Completion Time (s)",
+        ylim=c(0,
+               max(screen_plot.y_values)+max(screen_plot.error_bars)+50
+               ),
+        
+        )
+plotCI(c(1,2+0.5,3+1),
        screen_plot.y_values,
        screen_plot.error_bars,
        err='y',
        add=TRUE,
        lty=1,
-       pch=4
-       )
-legend(2.65,405,
-       legend=c("x","y","z"),
-       lty=1,
-       lwd=3,
-       col=c("red","blue","cyan"),
-       title="Screen"
+       pch=3,
        )
 #dev.off()

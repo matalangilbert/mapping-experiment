@@ -1,4 +1,4 @@
-library(plotrix)
+library(plotrix) #required for plotCI()
 setwd("~/Dropbox/UniWork/MappingExperiment/Scripts")
 
 input_data <- read.csv("~/Dropbox/UniWork/MappingExperiment/D/r_primary_output_measure_d.csv")
